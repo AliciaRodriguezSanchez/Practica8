@@ -24,7 +24,7 @@ schemas de validacion y middlewares.
 - `src/middlewares`: valida ids, relaciones y errores de base de datos.
 - `src/utils/error-logger.js`: guarda errores de MySQL en ficheros de log.
 - `BBDD/post_db.sql`: script SQL con la estructura y datos iniciales.
-- `diagram/schema.png`: se añade un esquema resumen de como se estructura el flujo
+- `diagram`: se añade un esquema resumen de como se estructura el flujo principal, y un esquema de la bbdd 
 - `peticiones.rest`: ejemplos de peticiones para probar la API.
 
 ## Configuracion
