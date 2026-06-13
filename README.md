@@ -10,7 +10,7 @@ schemas de validacion y middlewares.
 - Express
 - MySQL con `mysql2`
 - Yup para validar datos de entrada
-- Dotenv para variables de entorno
+- Dotenv para variables de entorno (no se sube el .env lo añado al gitignore)
 - Biome para lint/formato
 
 ## Estructura principal
@@ -24,6 +24,7 @@ schemas de validacion y middlewares.
 - `src/middlewares`: valida ids, relaciones y errores de base de datos.
 - `src/utils/error-logger.js`: guarda errores de MySQL en ficheros de log.
 - `BBDD/post_db.sql`: script SQL con la estructura y datos iniciales.
+- `diagram/schema.png`: se añade un esquema resumen de como se estructura el flujo
 - `peticiones.rest`: ejemplos de peticiones para probar la API.
 
 ## Configuracion
@@ -79,3 +80,4 @@ Las validaciones propias de la API se controlan con middlewares y schemas. Los
 errores de base de datos se gestionan en un middleware especifico y se guardan
 en `logs/mysql-errors.log`, evitando enviar detalles internos de MySQL en la
 respuesta al cliente.
+
