@@ -1,0 +1,22 @@
+{
+  "name": "Practica8",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "lint": "biome lint",
+    "format": "biome check --write"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "latest",
+    "express": "latest",
+    "mysql2": "^3.22.5",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.16",
+    "nodemon": "latest"
+  }
+}

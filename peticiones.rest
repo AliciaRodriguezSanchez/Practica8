@@ -1,0 +1,137 @@
+@host = http://localhost:3001
+@authorId = 10
+@postId = 1
+
+### AUTHORS - Obtener todos los autores
+GET {{host}}/api/authors
+
+### AUTHORS - Obtener un autor por id
+GET {{host}}/api/authors/{{authorId}}
+
+### AUTHORS - Crear autor correcto pero que ya existe el email
+POST {{host}}/api/authors
+Content-Type: application/json
+
+{
+    "name": "Rosa Maria",
+    "email": "rosamaria.garcia@email.com",
+    "image": "rosa.jpg"
+}
+
+### AUTHORS - Crear autor correcto y devuelve objeto con los datos del usario
+POST {{host}}/api/authors
+Content-Type: application/json
+
+{
+    "name": "Rosa_Hermana garcia",
+    "email": "rosaGarcia1@gmail1.com",
+    "image": "rosa.jpg"
+}
+
+
+### AUTHORS - Error validacion: falta name y email
+POST {{host}}/api/authors
+Content-Type: application/json
+
+{
+    "image": "rosa.jpg"
+}
+
+### AUTHORS - Error validacion: email incorrecto
+POST {{host}}/api/authors
+Content-Type: application/json
+
+{
+    "name": "Rosa",
+    "email": "rosa-gmail.com",
+    "image": "rosa.jpg"
+}
+
+### AUTHORS - Actualizar autor y devuelve objeto con los datos del usario
+PUT {{host}}/api/authors/{{authorId}}
+Content-Type: application/json
+
+{
+    "name": "uan Pérez Sanchez",
+    "email": "juan.perez@email.com",
+    "image": "perez.jpg"
+}
+
+### AUTHORS - Error: id de autor no numerico
+GET {{host}}/api/authors/abc
+
+### AUTHORS - Error: autor no existe
+GET {{host}}/api/authors/999999
+
+### AUTHORS - Borrar autor , al borrar devuelve objeto con los datos del usuario
+DELETE {{host}}/api/authors/{{authorId}}
+
+### POSTS - Obtener todos los posts con datos del autor
+GET {{host}}/api/posts
+
+### POSTS - Obtener un post por id con datos del autor
+GET {{host}}/api/posts/{{postId}}
+
+### POSTS - Obtener posts de un autor concreto. (VALIDAR QUE ESXISTA EL AUTOR Y SI ESE AUTOR TIENE POST PUBLICADOS) XXXXXX
+GET {{host}}/api/authors/{{authorId}}/posts
+
+### POSTS - Crear post correcto
+POST {{host}}/api/posts
+Content-Type: application/json
+
+{
+    "title": "Mi primer post",
+    "description": "Contenido del post",
+    "category": "tecnologia",
+    "author_id": 1
+}
+
+### POSTS - Error validacion: categoria no permitida
+POST {{host}}/api/posts
+Content-Type: application/json
+
+{
+    "title": "Mi primer post",
+    "description": "Contenido del post",
+    "category": "otra",  // CATEGORIA RELACIONAR NUMERICO /STRING 
+    "author_id": 1
+}
+
+### POSTS - Error validacion: faltan campos al post
+POST {{host}}/api/posts
+Content-Type: application/json
+
+{
+    "title": "Post incompleto"
+}
+
+### POSTS - Error: EL author no existe por lo que no puede añadir el post
+POST {{host}}/api/posts
+Content-Type: application/json
+
+{
+    "title": "Post sin autor valido",
+    "description": "Este post deberia fallar",
+    "category": "noticias",
+    "author_id": 999999
+}
+
+### POSTS - Actualizar post correcto
+PUT {{host}}/api/posts/{{postId}}
+Content-Type: application/json
+
+{
+    "title": "Post actualizado s",
+    "description": "Contenido actualizado",
+    "category": "opinion",
+    "author_id": 1
+}
+
+### POSTS - Error: id de post no numerico
+GET {{host}}/api/posts/abc
+
+### POSTS - Error: post no existe
+GET {{host}}/api/posts/999999
+
+### POSTS - Borrar post
+DELETE {{host}}/api/posts/{{postId}}
